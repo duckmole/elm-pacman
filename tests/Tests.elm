@@ -15,7 +15,7 @@ all =
         [ describe "Model"
             [ test "Initialisation" <|
                 \() ->
-                    Expect.equal Model.init ([['.', '.', '.'], ['.', '.', '.'], ['.', '.', '.']], (1,1))
+                    Expect.equal Model.init ([['.', '.', '.'], ['.', 'O', '.'], ['.', '.', '.']], (1,1))
             ]
 --          , describe "View"
 --            [ test "Display pacman on grid" <|
@@ -37,9 +37,14 @@ all =
             [ test "Update when press -> key " <|
                 \() ->
                     let
-                      (_, position) = (Update.pressesKey '%' Model.init)
+                      result = (Update.pressesKey '%' Model.init)
+                      expectedGrid = [
+                        ['.','.','.'],
+                        ['O',' ','.'],
+                        ['.','.','.']
+                      ]
                     in
-                      Expect.equal (0,1) position,
+                      Expect.equal (expectedGrid, (0,1)) result,
               test "Update when press <- key " <|
                 \() ->
                     let

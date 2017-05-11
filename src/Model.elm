@@ -6,7 +6,7 @@ type alias PacMan = (Int, Int)
 type alias Model = (Grid, PacMan)
 
 defaultGrid = [ ['.', '.', '.'],
-                  ['.', '.', '.'],
+                  ['.', 'O', '.'],
                   ['.', '.', '.']]
 pacManPostion = (1,1)
 
